@@ -14,4 +14,7 @@ Rails.application.routes.draw do
 
   # The root path
   root "pages#home"
+
+  # The about page path
+  get "about", to: "pages#about"
 end
