@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   # The about page path
   get "about", to: "pages#about"
 
-  resources :articles, only: [ :show ]
+  resources :articles, only: [ :show, :index ]
 end
