@@ -1,0 +1,23 @@
+<h1>Create a new article</h1>
+
+
+
+<%# Utilize data: { turbo: false } para conseguir renderizar algo na tela com 
+<%# o render quando a ação de submissão de formulário for feita 
+<%# <%= %form_with scope: :article, url: articles_path, local: true, data: { turbo: false} do |f| %>
+
+<%= form_with scope: :article, url: articles_path, local: true do |f| %>
+    <p>
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+    </p>
+
+    <p>
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+    </p>
+
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
