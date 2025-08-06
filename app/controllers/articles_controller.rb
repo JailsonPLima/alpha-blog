@@ -9,13 +9,19 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
   end
 
   def create
-    # render plain: params[:article]
     @article = Article.new(params.require(:article).permit(:title, :description))
-    @article.save
-    # redirect_to articles_path(@article)
-    redirect_to @article
+
+    if @article.save
+      flash[:notice] = "Article was created successfully."
+      redirect_to @article
+    else
+      # A partir do Rails 7 é necessário alterar o código de resposta para um
+      # status, caso contrário, os erros não serão exibidos
+      render :new, status: :unprocessable_entity
+    end
   end
 end
