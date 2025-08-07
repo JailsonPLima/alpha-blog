@@ -23,9 +23,9 @@
   </head>
 
   <body>
-    <% flash.each do |name, msg| %>
-      <%= msg %>
-    <% end %>
+    <%# Em layouts é necessário importar os partials com o diretório no
+    caminho %>
+    <% render 'layouts/messages' %>
     <%= yield %>
   </body>
 </html>
