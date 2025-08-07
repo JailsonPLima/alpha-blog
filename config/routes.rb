@@ -18,5 +18,10 @@ Rails.application.routes.draw do
   # The about page path
   get "about", to: "pages#about"
 
-  resources :articles, only: [ :show, :index, :new, :create, :edit, :update ]
+  # resources :articles, only: [ :show, :index, :new, :create, :edit, :update, :destroy ]
+
+  # REST - Representational State Transfer - mapeia os verbos HTTP (get, post, put/patch, delete) to CRUD actions
+  # resources fornece rotas REST-ful para recursos Rails
+
+  resources :articles
 end
