@@ -12,6 +12,10 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
     @article = Article.new(params.require(:article).permit(:title, :description))
 
@@ -21,6 +25,16 @@ class ArticlesController < ApplicationController
     else
       # A partir do Rails 7 é necessário alterar o código de resposta para um
       # status, caso contrário, os erros não serão exibidos
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(params.require(:article).permit(:title, :description))
+      flash[:notice] = "Article was updated successfully."
+      redirect_to @article
+    else
       render :new, status: :unprocessable_entity
     end
   end

@@ -1,0 +1,30 @@
+<h1>Edit a article</h1>
+
+<% if @article.errors.any? %>
+    <h1>The following errors prevented the article from being saved</h1>
+    <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%# Utilize data: { turbo: false } para conseguir renderizar algo na tela com 
+o render, ou qualquer outra forma de renderizar algo dentro da atual, assim que 
+a ação de submissão de formulário for feita %>
+
+<%# <%= %form_with scope: :article, url: articles_path, local: true, data: { turbo: false} do |f| %>
+
+<%= form_with(model: @article, local: true, data: { turbo: false}) do |f| %>
+    <p>
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+    </p>
+    <p>
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+<% end %>
