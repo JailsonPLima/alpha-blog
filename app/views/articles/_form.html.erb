@@ -1,11 +1,4 @@
-<% if @article.errors.any? %>
-    <h1>The following errors prevented the article from being saved</h1>
-    <ul>
-        <% @article.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-    </ul>
-<% end %>
+<%= render "shared/errors" %>
 
 <%# Utilize data: { turbo: false } para conseguir renderizar algo na tela com 
 o render, ou qualquer outra forma de renderizar algo dentro da atual, assim que 
