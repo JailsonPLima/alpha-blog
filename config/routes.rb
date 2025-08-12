@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   # REST - Representational State Transfer - mapeia os verbos HTTP (get, post, put/patch, delete) to CRUD actions
   # resources fornece rotas REST-ful para recursos Rails
-
   resources :articles
+
+  # Signup
+  get "signup", to: "users#new"
+  resources :users, excpet: [ :new ]
 end
