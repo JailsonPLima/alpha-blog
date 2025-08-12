@@ -5,6 +5,8 @@
 
 <p>
     <small>
+        Created by <%= @article.user.username if @article.user %>
+        <br />
         Created <%= time_ago_in_words(@article.created_at) %> ago, edited <%= time_ago_in_words(@article.updated_at) %> ago
     </small>
 </p>

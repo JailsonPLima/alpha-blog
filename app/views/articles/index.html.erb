@@ -5,6 +5,7 @@
         <tr>
             <th>Title</th>
             <th>Description</th>
+            <th>Owner</th>
             <th>Created</th>
             <th>Updated</th>
             <th colspan=3>Actions</th>
@@ -16,6 +17,8 @@
             <tr>
                 <td><%= article.title %></td>
                 <td><%= truncate(article.description, length: 100) %></td>
+                <%# O if é uma solução temporária para que o front-end rode %>
+                <td><%= article.user.username if article.user %></td>
                 <td><%= time_ago_in_words(article.created_at).capitalize %></td>
                 <td><%= time_ago_in_words(article.updated_at).capitalize %></td>
                 <td><%= link_to 'Show', article_path(article) %></td>
