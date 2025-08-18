@@ -1,5 +1,7 @@
 <h1>Alpha Bloggers</h1>
 
+<%= will_paginate @users, :container => false %>
+
 <% @users.each do |user| %>
     <h2>
         <%= link_to gravatar_for(user, size: 100), user_path(user) %>
@@ -13,6 +15,13 @@
     </p>
 
     <%= link_to 'View profile', user_path(user) %> |
-    <%= link_to 'Edit profile', edit_user_path(user) %> |
-    <%= link_to 'Return to articles listing', articles_path %>
+    <%= link_to 'Edit profile', edit_user_path(user) %>
 <% end %>
+
+<br /><br />
+
+<%= will_paginate @users, :container => false %>
+
+<p>
+    <%= link_to 'Return to articles listing', articles_path %>
+</p>
