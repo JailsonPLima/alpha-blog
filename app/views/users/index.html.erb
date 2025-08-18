@@ -1,0 +1,18 @@
+<h1>Alpha Bloggers</h1>
+
+<% @users.each do |user| %>
+    <h2>
+        <%= link_to gravatar_for(user, size: 100), user_path(user) %>
+        <%= link_to user.username, user_path(user) %>
+    </h2>
+
+    <p>
+        <small>
+            Joined <%= time_ago_in_words(user.created_at) %>
+        </small>
+    </p>
+
+    <%= link_to 'View profile', user_path(user) %> |
+    <%= link_to 'Edit profile', edit_user_path(user) %> |
+    <%= link_to 'Return to articles listing', articles_path %>
+<% end %>
