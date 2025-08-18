@@ -5,7 +5,11 @@
 
 <p>
     <small>
-        Created by <%= @article.user.username if @article.user %>
+        Created 
+        <% if @article.user %>
+            by <%= link_to @article.user.username, user_path(@article.user) %>
+        <% end %>
+        <%= link_to gravatar_for(@article.user), user_path(@article.user) %>
         <br />
         Created <%= time_ago_in_words(@article.created_at) %> ago, edited <%= time_ago_in_words(@article.updated_at) %> ago
     </small>
