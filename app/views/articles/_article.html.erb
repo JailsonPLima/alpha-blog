@@ -13,7 +13,9 @@
         </small>
     </p>
 
-    <%= link_to 'Show', article_path(article) %> |
-    <%= link_to 'Edit', edit_article_path(article) %> |
-    <%= link_to 'Delete', article, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <%= link_to 'Show', article_path(article) %>
+    <% if logged_in? && article.user == current_user %>
+        | <%= link_to 'Edit', edit_article_path(article) %> |
+        <%= link_to 'Delete', article, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <% end %>
 <% end %>

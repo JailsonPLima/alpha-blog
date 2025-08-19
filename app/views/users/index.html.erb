@@ -13,9 +13,11 @@
             Joined <%= time_ago_in_words(user.created_at) %>
         </small>
     </p>
-
-    <%= link_to 'View profile', user_path(user) %> |
-    <%= link_to 'Edit profile', edit_user_path(user) %>
+    
+    <%= link_to 'View profile', user_path(user) %>
+    <% if logged_in? && user == current_user %>
+        | <%= link_to 'Edit profile', edit_user_path(user) %>
+    <% end %>
 <% end %>
 
 <br /><br />

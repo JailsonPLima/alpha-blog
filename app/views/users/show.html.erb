@@ -1,7 +1,9 @@
 <h1><%= gravatar_for @user, size: 100 %> <%= @user.username %>'s profile</h1>
 
 <p>
-    <%= link_to "Edit your profile", edit_user_path(@user) %>
+    <%if logged_in? && @user == current_user %>
+        <%= link_to "Edit your profile", edit_user_path(@user) %>
+    <% end %>
 </p>
 
 <%= will_paginate @articles, :container => false %>
