@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     # Resolução temporária para o uso do front-end
-    @article.user = User.first
+    @article.user = current_user
 
     if @article.save
       flash[:notice] = "Article was created successfully."
