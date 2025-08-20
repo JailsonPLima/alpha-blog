@@ -3,7 +3,9 @@ class User < ApplicationRecord
   # no banco de dados, ele executará o método downcase abaixo.
   before_save { self.email = email.downcase }
 
-  has_many :articles
+  # Basicamente, se um usuário for excluído, qualquer dependente associados a
+  # ele, no caso os artigos, também serão destruídos.
+  has_many :articles, dependent: :destroy
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { minimum: 3, maximum: 25 }
 
